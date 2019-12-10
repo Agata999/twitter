@@ -5,6 +5,8 @@ class Twitter:
         self.tweets = []
 
     def tweet(self, message):
+        if len(message) > 160:
+            raise Exception('Too long message')
         self.tweets.append(message)
 
 
