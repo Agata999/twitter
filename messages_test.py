@@ -19,3 +19,10 @@ def test_tweet_long_message():
     with pytest.raises(Exception):
         twitter.tweet('Long message'*20)
     assert twitter.tweets == []
+
+
+def test_tweet_with_hashtag():
+    twitter = Twitter()
+    message = 'Message #with a hashtag'
+    twitter.tweet(message)
+    assert 'with' in twitter.find_hashtags(message)

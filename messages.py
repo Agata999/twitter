@@ -1,3 +1,6 @@
+import re
+
+
 class Twitter:
     version = "2.0"
 
@@ -9,8 +12,5 @@ class Twitter:
             raise Exception('Too long message')
         self.tweets.append(message)
 
-
-t = Twitter()
-print(t.tweets)
-t.tweet('First message')
-print(t.tweets)
+    def find_hashtags(self, message):
+        return re.findall(r'#(\w+) ', message)
