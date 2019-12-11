@@ -21,8 +21,13 @@ def test_tweet_long_message():
     assert twitter.tweets == []
 
 
-def test_tweet_with_hashtag():
+@pytest.mark.parametrize("message, expected", (
+        ("Message #with a hashtag", ["with"]),
+        ("#with a hashtag", ["with"]),
+        ("#WITH a hashtag", ["WITH"]),
+        ("Message with a #hashtag", ["hashtag"]),
+        ("Message #with 2 #hashtags", ["with", "hashtags"])
+))
+def test_tweet_with_hashtag(message, expected):
     twitter = Twitter()
-    message = 'Message #with a hashtag'
-    twitter.tweet(message)
-    assert 'with' in twitter.find_hashtags(message)
+    assert twitter.find_hashtags(message) == expected
