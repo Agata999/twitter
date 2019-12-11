@@ -24,7 +24,7 @@ def test_tweet_long_message():
 @pytest.mark.parametrize("message, expected", (
         ("Message #with a hashtag", ["with"]),
         ("#with a hashtag", ["with"]),
-        ("#WITH a hashtag", ["WITH"]),
+        ("#WITH a hashtag", ["with"]),
         ("Message with a #hashtag", ["hashtag"]),
         ("Message #with 2 #hashtags", ["with", "hashtags"])
 ))
