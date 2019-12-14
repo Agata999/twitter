@@ -1,11 +1,16 @@
+import os
 import re
 
 
 class Twitter:
     version = "2.0"
 
-    def __init__(self):
+    def __init__(self, backend=None):
+        self.backend = backend
         self.tweets = []
+        if self.backend and not os.path.exists(self.backend):
+            with open(self.backend, 'w'):
+                pass
 
     def delete(self):
         print('It\'s the end')
