@@ -3,8 +3,8 @@ import pytest
 from messages import Twitter
 
 
-@pytest.fixture
-def twitter():
+@pytest.fixture(name='twitter')
+def fixture_twitter():
     twitter = Twitter()
     yield twitter
     twitter.delete()
