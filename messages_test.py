@@ -3,9 +3,9 @@ import pytest
 from messages import Twitter
 
 
-@pytest.fixture(name='twitter')
-def fixture_twitter():
-    twitter = Twitter()
+@pytest.fixture(name='twitter', params=[None, 'test.txt'])
+def fixture_twitter(request):
+    twitter = Twitter(backend=request.param)
     yield twitter
     twitter.delete()
 

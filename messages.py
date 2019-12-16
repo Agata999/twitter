@@ -13,6 +13,8 @@ class Twitter:
                 pass
 
     def delete(self):
+        if self.backend:
+            os.remove(self.backend)
         print('It\'s the end')
 
     @property
